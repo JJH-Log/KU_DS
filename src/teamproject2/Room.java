@@ -57,6 +57,7 @@ public class Room extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tmp=textField.getText();
+				String pretmp;
 				if(tmp.length()==0) {
 					JOptionPane.showMessageDialog(null, "빈 입력입니다.");
 					textField.setText("");
