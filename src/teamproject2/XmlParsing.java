@@ -18,7 +18,7 @@ public class XmlParsing {
 		
 		documentInfo.getDocumentElement();
 		NodeList nList=documentInfo.getElementsByTagName("word");
-		if(nList==null) return false;
+		if(nList.item(0)==null) return false;
 
 		else return (nList.item(0).getTextContent().equals(word));
 		
