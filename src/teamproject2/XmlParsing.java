@@ -5,6 +5,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class XmlParsing {
 	public final static String baseUrl= "https://opendict.korean.go.kr/api/search?key=B68A5E214C83C3BB3AC7B02F21371FF2&part=word&method=exact&num=10&q=";
@@ -16,13 +17,10 @@ public class XmlParsing {
 				.parse(baseUrl+word);
 		
 		documentInfo.getDocumentElement();
-		Node nNode=documentInfo.getElementsByTagName("word").item(0);
+		NodeList nList=documentInfo.getElementsByTagName("word");
+		if(nList==null) return false;
 
-		if(nNode==null) return false;
-		else {
-			System.out.println(nNode.getTextContent()==word);
-			return (nNode.getTextContent().equals(word));
-		}
+		else return (nList.item(0).getTextContent().equals(word));
 		
 		}
 		catch(Exception e) {

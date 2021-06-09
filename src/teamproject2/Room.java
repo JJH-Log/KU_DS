@@ -59,14 +59,17 @@ public class Room extends JPanel {
 				String tmp=textField.getText();
 				if(tmp.length()==0) {
 					JOptionPane.showMessageDialog(null, "빈 입력입니다.");
+					textField.setText("");
 					return ;
 				}
 				if(Answer.contains(tmp)){
 					JOptionPane.showMessageDialog(null, "중복된 단어가 있음");
+					textField.setText("");
 					return ;
 				}
 				if(!xmlParsing.search(tmp)){
 					JOptionPane.showMessageDialog(null, "국어사전에 등록된 단어가 아님");
+					textField.setText("");
 					return ;
 				}
 				else {
@@ -90,7 +93,7 @@ public class Room extends JPanel {
 						ThirdAnswer.setText(tmp);
 					}	
 				}
-				textField.setText("");
+
 		}
 		});
 		setLayout(null);
