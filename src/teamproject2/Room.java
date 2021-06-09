@@ -54,10 +54,25 @@ public class Room extends JPanel {
 		ThirdAnswer.setBounds(756, 210, 180, 100);
 		ThirdAnswer.setEditable(false);
 		
+		TimerGraphic g = new TimerGraphic();
+		g.setBounds(0, 0, 1200, 675);
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tmp=textField.getText();
 				String pretmp;
+				g.i = 0;
+				
+				class action implements ActionListener {
+					public void actionPerformed(ActionEvent e) {
+						if (g.i <= 788) {
+							g.repaint();
+						}
+					}
+				}
+				
+				Timer t = new Timer(50, new action());
+				
 				if(tmp.length()==0) {
 					JOptionPane.showMessageDialog(null, "빈 입력입니다.");
 					textField.setText("");
@@ -116,5 +131,21 @@ public class Room extends JPanel {
 		this.add(btnNewButton);
 		this.add(textField);
 		this.add(prevAnswer);
+		this.add(g);
+	}
+}
+
+class TimerGraphic extends JLabel {
+	int i = 0;	
+	public void paintComponent(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(146, 579, 788, 20);
+		g.setColor(Color.WHITE);
+		g.fillRect(934 - i, 579, i, 20);
+		i++;
+		if (i > 788) {
+			i = 789;
+			JOptionPane.showMessageDialog(null, "제한 시간 초과");
+		}
 	}
 }
