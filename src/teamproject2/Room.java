@@ -68,6 +68,14 @@ public class Room extends JPanel {
 					textField.setText("");
 					return ;
 				}
+				if (Answer.size() > 0) {
+					pretmp = Answer.get(Answer.size() - 1);
+					if (pretmp.charAt(pretmp.length() - 1) != tmp.charAt(0)) {
+						JOptionPane.showMessageDialog(null, "이전 단어의 끝글자와 첫글자가 다름");
+						textField.setText("");
+						return ;
+					}
+				}
 				if(!xmlParsing.search(tmp)){
 					JOptionPane.showMessageDialog(null, "국어사전에 등록된 단어가 아님");
 					textField.setText("");
@@ -78,20 +86,24 @@ public class Room extends JPanel {
 					if(Answer.isEmpty()) {
 						Answer.add(tmp);
 						FirstAnswer.setText(tmp);
+						textField.setText("");
 					}
 					else if(Answer.size()==1) {
 						Answer.add(tmp);
 						SecondAnswer.setText(tmp);
+						textField.setText("");
 					}
 					else if(Answer.size()==2){
 						Answer.add(tmp);
 						ThirdAnswer.setText(tmp);
+						textField.setText("");
 					}
 					else {
 						Answer.add(tmp);
 						FirstAnswer.setText(SecondAnswer.getText());
 						SecondAnswer.setText(ThirdAnswer.getText());
 						ThirdAnswer.setText(tmp);
+						textField.setText("");
 					}	
 				}
 
