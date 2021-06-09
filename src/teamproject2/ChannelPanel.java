@@ -20,7 +20,7 @@ public class ChannelPanel extends JPanel {
 		ChannelLabel.setBounds(a,b,c,d);
 		ChannelLabel.setText(LabelText);
 	}
-	
+
 	public JButton getButton() {
 		return EntranceBtn;
 	}

@@ -13,11 +13,15 @@ import javax.swing.border.EmptyBorder;
 
 public class UserGUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4286945394785661101L;
 	private JPanel contentPane;
 	private LogIn LogInComponent;
 	private Channel ChannelComponent;
-	private Room RoomComponent;
-	private static final long serialVersionUID = 1L;
+	private Room[] RoomComponent;
+	private static int numOfChannel=4;
 	
 	private void setPanelBounds(JComponent Component,int a,int b,int c, int d) {
 		Component.setBounds(a,b,c,d);
@@ -54,13 +58,16 @@ public class UserGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		ChannelComponent = new Channel();
-		setPanelBounds(ChannelComponent,0,0,1200,675);
+			setPanelBounds(ChannelComponent,0,0,1200,675);
 		
 		LogInComponent = new LogIn();
 		setPanelBounds(LogInComponent,0,0,1200,675);
 		
-		RoomComponent = new Room();
-		setPanelBounds(RoomComponent,0,0,1200,675);
+		RoomComponent = new Room[4];
+		for(int i=0;i<numOfChannel;i++) {
+			RoomComponent[i]=new Room();
+			setPanelBounds(RoomComponent[i],0,0,1200,675);
+		}
 		
 		LogInComponent.getButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -71,16 +78,17 @@ public class UserGUI extends JFrame {
 				}
 
 			});
-		
-		ChannelComponent.ChannelPanel1.getButton().addActionListener(new ActionListener() {
+		for(int i=0;i<numOfChannel;i++) {
+		ChannelComponent.ChannelPanel[i].getButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "You have Entranced in successfully");
-				addComponent(RoomComponent);
+				addComponent(RoomComponent[0]);
 				ChannelComponent.setVisible(false);
-				RoomComponent.setVisible(true);
+				RoomComponent[0].setVisible(true);
 			}
 
 		});
+		}
 		this.addComponent(LogInComponent);
 
 	}

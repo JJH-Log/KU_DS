@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import java.util.*;
+import javax.swing.JTextArea;
 
 public class Room extends JPanel {
 
@@ -19,6 +20,7 @@ public class Room extends JPanel {
 	private List<String> Answer;
 	private XmlParsing xmlParsing;
 	private JButton btnNewButton;
+	private JTextArea prevAnswer;
 	private JTextPane FirstAnswer;
 	private JTextPane SecondAnswer;
 	private JTextPane ThirdAnswer;
@@ -36,6 +38,10 @@ public class Room extends JPanel {
 		btnNewButton = new JButton("Submit");
 		btnNewButton.setBounds(935, 599, 97, 47);
 		
+		prevAnswer = new JTextArea();
+		prevAnswer.setEditable(false);
+		prevAnswer.setBounds(489, 41, 180, 100);
+		
 		FirstAnswer = new JTextPane();
 		FirstAnswer.setBounds(223, 210, 180, 100);
 		FirstAnswer.setEditable(false);
@@ -51,18 +57,23 @@ public class Room extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tmp=textField.getText();
+				if(tmp.length()==0) {
+					JOptionPane.showMessageDialog(null, "빈 입력입니다.");
+					return ;
+				}
 				if(Answer.contains(tmp)){
 					JOptionPane.showMessageDialog(null, "중복된 단어가 있음");
 					return ;
 				}
-				if(!(xmlParsing.search(tmp))){
+				if(!xmlParsing.search(tmp)){
 					JOptionPane.showMessageDialog(null, "국어사전에 등록된 단어가 아님");
 					return ;
 				}
 				else {
+					prevAnswer.setText(tmp);
 					if(Answer.isEmpty()) {
 						Answer.add(tmp);
-						ThirdAnswer.setText(tmp);
+						FirstAnswer.setText(tmp);
 					}
 					else if(Answer.size()==1) {
 						Answer.add(tmp);
@@ -70,13 +81,13 @@ public class Room extends JPanel {
 					}
 					else if(Answer.size()==2){
 						Answer.add(tmp);
-						FirstAnswer.setText(tmp);
+						ThirdAnswer.setText(tmp);
 					}
 					else {
 						Answer.add(tmp);
-						ThirdAnswer.setText(SecondAnswer.getText());
-						SecondAnswer.setText(FirstAnswer.getText());
-						FirstAnswer.setText(tmp);
+						FirstAnswer.setText(SecondAnswer.getText());
+						SecondAnswer.setText(ThirdAnswer.getText());
+						ThirdAnswer.setText(tmp);
 					}	
 				}
 				textField.setText("");
@@ -88,5 +99,6 @@ public class Room extends JPanel {
 		this.add(ThirdAnswer);
 		this.add(btnNewButton);
 		this.add(textField);
+		this.add(prevAnswer);
 	}
 }
