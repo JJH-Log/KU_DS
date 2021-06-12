@@ -1,6 +1,8 @@
 package teamproject2;
 
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +13,7 @@ import teamproject2.CMWinServer.MyActionListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.util.*;
