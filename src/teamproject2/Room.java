@@ -124,6 +124,7 @@ public class Room extends JPanel {
 		this.add(ThirdAnswer);
 		this.add(btnNewButton);
 		this.add(prevAnswer);
+		this.add(g);
 	}
 }
 
