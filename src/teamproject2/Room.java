@@ -78,11 +78,6 @@ public class Room extends JPanel {
 		Answer = new ArrayList<String>();
 		xmlParsing = new XmlParsing();
 		
-		textField = new JTextField();
-		textField.setBounds(146, 599, 790, 47);
-		
-		textField.setColumns(10);
-		
 		btnNewButton = new JButton("Submit");
 		btnNewButton.setBounds(935, 599, 97, 47);
 		
