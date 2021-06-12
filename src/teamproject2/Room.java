@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 public class Room extends JPanel {
 
 	private static final long serialVersionUID = -230685077180076986L;
+	private JTextField textField;
 	private List<String> Answer;
 	private XmlParsing xmlParsing;
 	private JButton btnNewButton;
@@ -77,6 +78,11 @@ public class Room extends JPanel {
 		Answer = new ArrayList<String>();
 		xmlParsing = new XmlParsing();
 		
+		textField = new JTextField();
+		textField.setBounds(146, 599, 790, 47);
+		
+		textField.setColumns(10);
+		
 		btnNewButton = new JButton("Submit");
 		btnNewButton.setBounds(935, 599, 97, 47);
 		
@@ -102,5 +108,20 @@ public class Room extends JPanel {
 		this.add(ThirdAnswer);
 		this.add(btnNewButton);
 		this.add(prevAnswer);
+	}
+}
+
+class TimerGraphic extends JLabel {
+	int i;
+	public void paintComponent(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(146, 579, 788, 15);
+		g.setColor(Color.WHITE);
+		g.fillRect(934 - i, 579, i, 20);
+		i++;
+		if (i > 788) {
+			i = 789;
+			JOptionPane.showMessageDialog(null, "제한 시간 초과");
+		}
 	}
 }
