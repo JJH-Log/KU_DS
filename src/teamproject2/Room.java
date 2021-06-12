@@ -39,13 +39,13 @@ public class Room extends JPanel {
 		
 		class action implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				if (g.i <= 788) {
+				if (g.i <= 180) {
 					g.repaint();
 				}
 			}
 		}
 		
-		Timer t = new Timer(50, new action());
+		Timer t = new Timer(150, new action());
 		
 		if(tmp.length()==0) {
 			JOptionPane.showMessageDialog(null, "빈 입력입니다.");
@@ -132,12 +132,12 @@ class TimerGraphic extends JLabel {
 	int i;
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(146, 584, 788, 15);
+		g.fillRect(489, 141, 180, 10);
 		g.setColor(Color.WHITE);
-		g.fillRect(934 - i, 584, i, 15);
+		g.fillRect(180 - i, 141, i, 10);
 		i++;
-		if (i > 788) {
-			i = 789;
+		if (i > 180) {
+			i = 181;
 			JOptionPane.showMessageDialog(null, "제한 시간 초과");
 		}
 	}
