@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.Timer;
 
+import teamproject.TimerGraphic;
 import teamproject2.CMWinServer.MyActionListener;
 
 import javax.swing.JTextField;
@@ -33,6 +35,18 @@ public class Room extends JPanel {
 	
 	public void checkWord(String tmp) {
 		String pretmp;
+		TimerGraphic g = new TimerGraphic();
+		
+		class action implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				if (g.i <= 788) {
+					g.repaint();
+				}
+			}
+		}
+		
+		Timer t = new Timer(50, new action());
+		
 		if(tmp.length()==0) {
 			JOptionPane.showMessageDialog(null, "빈 입력입니다.");
 			return ;
@@ -71,7 +85,9 @@ public class Room extends JPanel {
 				FirstAnswer.setText(SecondAnswer.getText());
 				SecondAnswer.setText(ThirdAnswer.getText());
 				ThirdAnswer.setText(tmp);
-			}	
+			}
+			g.i = 0;
+			t.start();
 		}
 		return;
 	}
@@ -100,6 +116,9 @@ public class Room extends JPanel {
 		ThirdAnswer.setBounds(756, 210, 180, 100);
 		ThirdAnswer.setEditable(false);
 		
+		TimerGraphic g = new TimerGraphic();
+		g.setBounds(0, 0, 1200, 675);
+		
 		setLayout(null);
 		this.add(FirstAnswer);
 		this.add(SecondAnswer);
@@ -113,9 +132,9 @@ class TimerGraphic extends JLabel {
 	int i;
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(146, 579, 788, 15);
+		g.fillRect(146, 584, 788, 15);
 		g.setColor(Color.WHITE);
-		g.fillRect(934 - i, 579, i, 20);
+		g.fillRect(934 - i, 584, i, 15);
 		i++;
 		if (i > 788) {
 			i = 789;
