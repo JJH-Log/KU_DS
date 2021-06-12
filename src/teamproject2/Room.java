@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.Timer;
 
-import teamproject.TimerGraphic;
+import teamproject2.TimerGraphic;
 import teamproject2.CMWinServer.MyActionListener;
 
 import javax.swing.JTextField;
@@ -24,7 +24,6 @@ import javax.swing.JTextArea;
 public class Room extends JPanel {
 
 	private static final long serialVersionUID = -230685077180076986L;
-	private JTextField textField;
 	private List<String> Answer;
 	private XmlParsing xmlParsing;
 	private JButton btnNewButton;
