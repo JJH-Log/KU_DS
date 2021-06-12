@@ -8,9 +8,6 @@ import javax.swing.JTextField;
 
 public class LogIn extends JPanel {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9076369777156348457L;
 	private JLabel IdLabel;
 	private JLabel PasswordLabel;
@@ -38,25 +35,33 @@ public class LogIn extends JPanel {
 	}
 	public LogIn() {		
 		IdLabel = new JLabel();
-		this.setLabel(IdLabel,406, 304, 57, 15,"ID : ");
+		this.setLabel(IdLabel,406, 154, 57, 15,"ID : ");
 		
 		PasswordLabel = new JLabel();
-		this.setLabel(PasswordLabel,406, 333, 57, 15,"PW : ");
+		this.setLabel(PasswordLabel,406, 183, 57, 15,"PW : ");
 		
 		PasswordField = new JPasswordField();
-		this.setTextField(PasswordField, 442, 326, 190, 34,"Insert your Password");
+		this.setTextField(PasswordField, 442, 176, 190, 34,"Insert your Password");
 		
 		IdField=new JTextField();
-		this.setTextField(IdField, 442, 291, 190, 34,"Insert your Password");
+		this.setTextField(IdField, 442, 141, 190, 34,"Insert your Password");
 		
 		LogInBtn=new JButton();
-		this.setButton(LogInBtn, 631, 290, 133, 71, " LogIn ");
+		this.setButton(LogInBtn, 631, 140, 133, 71, " LogIn ");
 		
 		this.add(IdLabel);
 		this.add(PasswordLabel);
 		this.add(PasswordField);
 		this.add(IdField);
 		this.add(LogInBtn);
+	}
+
+	public String getUserName() {
+		return IdField.getText();
+	}
+	
+	public String getPassword() {
+		return new String(PasswordField.getPassword());
 	}
 
 }
